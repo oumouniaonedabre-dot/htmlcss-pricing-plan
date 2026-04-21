@@ -1,0 +1,141 @@
+:root {
+    --primary-color: #6366f1;
+    --text-main: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    padding: 2rem;
+}
+
+/* Header & Toggle Centering */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Layout Grid - Mobile First (Milestone 1 & 2) */
+.pricing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+/* Milestone 2: Professional in prima posizione su Mobile */
+.card--highlight {
+    order: -1; 
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Desktop Layout (3 colonne) */
+@media (min-width: 992px) {
+    .pricing-grid {
+        flex-direction: row;
+    }
+    
+    .card {
+        flex: 1;
+        order: 0; /* Reset ordine naturale */
+    }
+}
+
+/* TABLET BONUS (2 colonne + Ultimate Full Width) */
+@media (min-width: 600px) and (max-width: 991px) {
+    .pricing-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        flex: 1 1 calc(50% - 1rem);
+    }
+
+    .card--ultimate {
+        flex: 1 1 100%; /* Occupa tutto lo spazio */
+    }
+
+    /* Bonus: Lista su 2 colonne quando la card è full-width */
+    .card--ultimate .card__features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 2rem;
+    }
+}
+
+/* Componenti Interni */
+.card__price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+}
+
+.card__badge {
+    background: #e5e7eb;
+    color: var(--text-main);
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+}
+
+.card--highlight .card__badge {
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
+}
+
+.btn {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    cursor: pointer;
+}
+
+.btn--primary { background: var(--primary-color); color: var(--white); }
+.btn--white { background: var(--white); color: var(--primary-color); }
+
+.card__features {
+    list-style: none;
+    text-align: left;
+}
+
+.card__features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
